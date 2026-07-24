@@ -1,0 +1,25 @@
+.sva-section {
+  position: relative;
+  background: var(--white);
+  color: var(--navy);
+}
+
+.sva-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.sva-strategy,
+.sva-automation {
+  min-width: 0;
+  height: 100%;
+}
+
+@media (max-width: 960px) {
+  .sva-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

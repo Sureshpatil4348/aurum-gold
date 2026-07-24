@@ -1,0 +1,146 @@
+.automation-panel {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 36px;
+  border-radius: var(--radius);
+  background: linear-gradient(155deg, var(--navy-soft) 0%, var(--navy-deep) 100%);
+  border: 1px solid var(--navy-line);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.automation-panel::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(25, 208, 95, 0.14), transparent 68%);
+  pointer-events: none;
+}
+
+.automation-panel__intro {
+  position: relative;
+  z-index: 1;
+  max-width: 46ch;
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+.automation-panel__intro .eyebrow {
+  justify-content: flex-start;
+  color: var(--gold);
+}
+
+.automation-panel__intro .eyebrow::before {
+  background: var(--gold);
+}
+
+.automation-panel__title {
+  margin-top: 12px;
+  font-size: clamp(1.55rem, 1.1vw + 1.15rem, 2.1rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.automation-panel__title-accent {
+  color: var(--gold);
+}
+
+.automation-panel__body {
+  margin-top: 12px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.hva-table {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background: rgba(8, 12, 38, 0.35);
+  overflow: hidden;
+}
+
+.hva-table__head,
+.hva-table__row {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 18px;
+}
+
+.hva-table__head {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hva-table__head span:first-child {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.hva-table__head span:last-child {
+  color: var(--gold);
+  text-align: right;
+}
+
+.hva-table__row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hva-table__row:last-child {
+  border-bottom: none;
+}
+
+.hva-table__cell {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.hva-table__cell--human {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.hva-table__cell--aurum {
+  color: var(--white);
+  font-weight: 600;
+  text-align: right;
+}
+
+.hva-table__arrow {
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .automation-panel {
+    padding: 28px 22px;
+  }
+
+  .hva-table__head,
+  .hva-table__row {
+    padding: 12px 14px;
+    grid-template-columns: 1fr 28px 1fr;
+  }
+
+  .hva-table__cell {
+    font-size: 0.88rem;
+  }
+}

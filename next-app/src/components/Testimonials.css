@@ -1,0 +1,202 @@
+.testimonials--light {
+  background: linear-gradient(180deg, var(--white) 0%, #f7f8fc 100%);
+  color: var(--navy-deep);
+}
+
+.testimonials--light .eyebrow {
+  color: var(--gold);
+}
+
+.testimonials--light .eyebrow::before {
+  background: var(--gold);
+}
+
+.testimonials__head h2 {
+  color: var(--navy-deep);
+}
+
+.bgv-navy .testimonials__head h2 {
+  color: var(--white);
+}
+
+.testimonials__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.testimonials__head h2 {
+  margin-top: 14px;
+  font-size: var(--fs-h2);
+}
+
+.testimonials__sub {
+  margin-top: 14px;
+  color: var(--ink-muted-dark);
+  opacity: 0.7;
+  font-size: var(--fs-lead);
+}
+
+.bgv-navy .testimonials__sub {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.testimonials__nav {
+  display: flex;
+  gap: 10px;
+}
+
+.testimonials__nav button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--grey-line);
+  background: var(--white);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.testimonials__nav button:hover {
+  border-color: var(--gold);
+  color: #0fa84c;
+  transform: translateY(-2px);
+}
+
+.testimonials__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  padding: 6px 6px 16px;
+  scrollbar-width: none;
+  /* New stacking context so no descendant can ever paint over sibling
+     sections/cards outside the track, regardless of transform/shadow. */
+  isolation: isolate;
+}
+
+.testimonials__track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 244px;
+  scroll-snap-align: start;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 14px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  /* Position/size are never altered on hover/click — only visual accents
+     (border, shadow) change — so cards can never overlap their neighbours.
+     Do NOT add transform/scale here; it will visually push into neighbours
+     inside this tightly-packed flex track. */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.testimonial-card:hover,
+.testimonial-card.is-active {
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px -12px rgba(25, 208, 95, 0.25);
+}
+
+.testimonial-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.testimonial-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.testimonial-card__profit {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #35d68a;
+}
+
+.testimonial-card__stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.testimonial-card__text {
+  font-size: 0.82rem;
+  color: var(--ink-muted-dark);
+  opacity: 0.82;
+  line-height: 1.55;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.testimonial-card.is-active .testimonial-card__text {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.testimonial-card__foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.testimonial-card__avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: var(--navy-deep);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  flex: none;
+}
+
+.testimonial-card__foot div {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card__name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy-deep);
+}
+
+.testimonial-card__joined {
+  font-size: 0.76rem;
+  color: var(--ink-muted-dark);
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .testimonial-card {
+    flex-basis: 220px;
+  }
+}
+
+@media (max-width: 560px) {
+  .testimonial-card {
+    flex-basis: 78vw;
+  }
+}

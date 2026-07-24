@@ -1,0 +1,782 @@
+.setup-steps-alt {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.setup-step-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.setup-step-row.is-reversed .setup-step-row__content-group {
+  order: 2;
+}
+
+.setup-step-row.is-reversed .setup-step-row__media {
+  order: 1;
+}
+
+.setup-step-row__content-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-step {
+  display: flex;
+  gap: 22px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--navy-line);
+}
+
+.bgv-white .setup-step,
+.bgv-grey .setup-step {
+  border-bottom-color: rgba(16, 22, 63, 0.14);
+}
+
+.setup-step:first-child {
+  padding-top: 0;
+}
+
+.setup-step:last-child {
+  border-bottom: none;
+}
+
+.setup-step__num {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-top: 4px;
+}
+
+.setup-step__body h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.bgv-white .setup-step__body h3,
+.bgv-grey .setup-step__body h3 {
+  color: var(--navy-deep);
+}
+
+.setup-step__body p {
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.bgv-white .setup-step__body p,
+.bgv-grey .setup-step__body p {
+  color: var(--ink-muted-dark);
+}
+
+.setup-step__code {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--navy-line);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+
+.setup-step-row__media {
+  width: 100%;
+}
+
+.setup-video-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--navy-line);
+  background: linear-gradient(155deg, var(--navy-soft) 0%, var(--navy-deep) 100%);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+}
+
+.setup-video-card__frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.setup-video-card__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 75%);
+}
+
+.setup-video-card__play {
+  position: relative;
+  z-index: 2;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 0 rgba(25, 208, 95, 0.5);
+  animation: setup-video-pulse 2.4s ease-out infinite;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.setup-video-card__frame:hover .setup-video-card__play {
+  transform: scale(1.1);
+}
+
+.setup-video-card__play svg {
+  transform: translateX(2px);
+}
+
+@keyframes setup-video-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(25, 208, 95, 0.45); }
+  70% { box-shadow: 0 0 0 22px rgba(25, 208, 95, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(25, 208, 95, 0); }
+}
+
+.setup-video-card__player {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: block;
+  background: #000;
+}
+
+.setup-video-card__meta {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  z-index: 2;
+}
+
+.setup-video-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(13, 20, 56, 0.85);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(25, 208, 95, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+.video-placeholder__label {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+.video-placeholder__hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+}
+
+.video-placeholder__btn {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(25, 208, 95, 0.4);
+  background: rgba(25, 208, 95, 0.1);
+  color: var(--gold-soft);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.video-placeholder__btn:hover {
+  background: rgba(25, 208, 95, 0.2);
+  border-color: rgba(25, 208, 95, 0.6);
+}
+
+
+
+.section-head--center {
+  text-align: center;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-head--center .eyebrow {
+  justify-content: center;
+}
+
+/* ==========================================================================
+   VPS section — "Why serious traders use a VPS"
+   ========================================================================== */
+
+.vps-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+}
+
+.vps-left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vps-left__text h2 {
+  color: var(--navy);
+  margin-top: 12px;
+}
+
+.bgv-navy .vps-left__text h2 {
+  color: var(--white);
+}
+
+.vps-body {
+  margin-top: 14px;
+  color: var(--ink-muted-dark);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.bgv-navy .vps-body {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Fills the leftover white space below the paragraphs and centers the
+   benefit cards within it, so the left column's footprint lines up with
+   the provider card on the right. */
+.vps-left__spacer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  margin-top: 32px;
+}
+
+/* --- Provider comparison card ---------------------------------------- */
+
+.vps-providers {
+  position: relative;
+  border: 1px solid var(--navy-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+  box-shadow: var(--shadow-lg);
+}
+
+.vps-providers__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(25, 208, 95, 0.16), rgba(7, 214, 194, 0.1));
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  border-bottom: 1px solid var(--navy-line);
+}
+
+.vps-providers__title-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--gold-soft);
+}
+
+.vps-providers__list {
+  padding: 6px 4px;
+}
+
+.vps-provider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  margin: 0 4px;
+  border-bottom: 1px solid var(--navy-line);
+  border-radius: 10px;
+  transition: background 0.25s ease;
+}
+
+.vps-provider:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.vps-provider:last-child {
+  border-bottom: none;
+}
+
+.vps-provider__info {
+  min-width: 0;
+}
+
+.vps-provider__name {
+  font-size: 0.94rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.vps-provider__detail {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+}
+
+.vps-provider__price {
+  flex: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(25, 208, 95, 0.12);
+  border: 1px solid rgba(25, 208, 95, 0.28);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--gold-soft);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.vps-provider__price.is-free {
+  background: rgba(7, 214, 194, 0.14);
+  border-color: rgba(7, 214, 194, 0.35);
+  color: var(--cyan);
+}
+
+.vps-providers__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 8px;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(25, 208, 95, 0.08);
+  border: 1px solid rgba(25, 208, 95, 0.22);
+}
+
+.vps-providers__note-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  margin-top: 2px;
+  color: var(--gold-soft);
+}
+
+.vps-providers__note p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
+/* --- Supporting benefit cards ----------------------------------------- */
+.vps-benefits {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.vps-benefit-card {
+  padding: 10px 10px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px -10px rgba(16, 22, 63, 0.12);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.vps-benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -14px rgba(16, 22, 63, 0.18);
+  border-color: rgba(25, 208, 95, 0.32);
+}
+
+.vps-benefit-card__icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: rgba(25, 208, 95, 0.12);
+  color: #0fa84c;
+}
+
+.vps-benefit-card__icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.vps-benefit-card h3 {
+  font-size: 0.76rem;
+  color: var(--navy);
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+
+
+.vps-benefit-card p {
+  font-size: 0.68rem;
+  color: var(--ink-muted-dark);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Risk settings section — "Recommended risk settings by account size"
+   ========================================================================== */
+
+.risk-panel {
+  position: relative;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+  border: 1px solid var(--navy-line);
+  border-radius: 28px;
+  padding: 48px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.risk-panel::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(25, 208, 95, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.risk-panel__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 36px;
+}
+
+.risk-panel__header-text {
+  max-width: 640px;
+}
+
+.risk-panel__header-text h2 {
+  color: var(--white);
+  margin-top: 14px;
+}
+
+.risk-panel__header-text p {
+  margin-top: 16px;
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.65;
+}
+
+.risk-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+.risk-label__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.risk-panel__illustration {
+  flex: none;
+  width: 220px;
+  display: none;
+}
+
+.risk-table-wrap {
+  position: relative;
+  border: 1px solid var(--navy-line);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  background: rgba(7, 11, 32, 0.4);
+  -webkit-overflow-scrolling: touch;
+}
+
+.risk-table-v2 {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+}
+
+.risk-table-v2 thead th {
+  text-align: left;
+  padding: 16px 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--navy-line);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+
+.risk-table-v2 thead th.is-gold {
+  color: var(--gold-soft);
+}
+
+.risk-table-v2__head-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  vertical-align: -2px;
+}
+
+.risk-table-v2 tbody td {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--navy-line);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+}
+
+.risk-table-v2 tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.risk-table-v2 tbody tr {
+  transition: background 0.2s ease;
+}
+
+.risk-table-v2 tbody tr:hover {
+  background: rgba(25, 208, 95, 0.06);
+}
+
+.risk-table-v2 tbody td.is-gold {
+  color: var(--gold-soft);
+  font-weight: 700;
+}
+
+.risk-disclosure {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-radius: var(--radius-sm);
+  background: rgba(25, 208, 95, 0.06);
+  border: 1px solid rgba(25, 208, 95, 0.3);
+}
+
+.risk-disclosure__icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin-top: 2px;
+  color: var(--gold-soft);
+}
+
+.risk-disclosure p {
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.65;
+}
+
+.risk-disclosure strong {
+  color: var(--gold-soft);
+}
+
+/* --- Download CTA card -------------------------------------------------- */
+
+.risk-cta {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 30px 36px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.risk-cta__left {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  min-width: 260px;
+}
+
+.risk-cta__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(25, 208, 95, 0.12);
+  color: #0fa84c;
+}
+
+.risk-cta__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.risk-cta h4 {
+  color: var(--navy);
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.risk-cta p {
+  color: var(--ink-muted-dark);
+  font-size: 0.9rem;
+  max-width: 420px;
+}
+
+.risk-cta__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.btn--lg {
+  padding: 18px 34px;
+  font-size: 1rem;
+}
+
+.risk-cta__note {
+  font-size: 0.78rem;
+  color: var(--ink-muted-dark);
+  opacity: 0.65;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (min-width: 1080px) {
+  .risk-panel__illustration {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .setup-steps-alt {
+    gap: 56px;
+  }
+
+  .setup-step-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Reset the alternating order so text is always on top on mobile */
+  .setup-step-row.is-reversed .setup-step-row__content-group {
+    order: unset;
+  }
+
+  .setup-step-row.is-reversed .setup-step-row__media {
+    order: unset;
+  }
+
+  .vps-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .vps-left {
+    height: auto;
+  }
+
+  .vps-left__spacer {
+    margin-top: 28px;
+  }
+
+  .risk-panel {
+    padding: 34px 26px;
+    border-radius: 22px;
+  }
+
+  .risk-panel__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .risk-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px 24px;
+  }
+
+  .risk-cta__right {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .risk-cta__right .btn--lg {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .vps-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .vps-provider {
+    flex-wrap: wrap;
+  }
+
+  .risk-panel {
+    padding: 26px 18px;
+  }
+
+  .risk-table-v2 thead th,
+  .risk-table-v2 tbody td {
+    padding: 13px 16px;
+    font-size: 0.82rem;
+  }
+}

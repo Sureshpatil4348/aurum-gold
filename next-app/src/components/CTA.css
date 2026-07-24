@@ -1,0 +1,120 @@
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media (max-width: 860px) {
+  .cta-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+}
+
+.cta-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 38px 42px;
+  border: 1px solid var(--navy-line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+}
+
+.cta-box .eyebrow::before {
+  display: none;
+}
+
+.cta-box--primary {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: var(--navy-deep);
+  border-color: transparent;
+}
+
+.cta-box--secondary {
+  background: linear-gradient(155deg, var(--navy-soft) 0%, var(--navy-deep) 100%);
+  color: var(--white);
+  border-color: var(--navy-line);
+}
+
+.cta-box--secondary .eyebrow {
+  color: var(--gold);
+}
+
+.cta-box--secondary .cta-box__title {
+  color: var(--white);
+}
+
+.cta-box--secondary .cta-box__lead {
+  color: var(--ink-muted);
+  opacity: 1;
+}
+
+.cta-box__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  margin-bottom: 4px;
+  background: rgba(25, 208, 95, 0.14);
+  color: var(--gold);
+  flex: none;
+}
+
+.cta-box__glow {
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 60%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-box__title {
+  position: relative;
+  margin-top: 10px;
+  font-size: clamp(1.3rem, 1.2vw + 1rem, 1.7rem);
+}
+
+.cta-box--primary .cta-box__title {
+  color: var(--navy-deep);
+}
+
+.cta-box__lead {
+  position: relative;
+  margin-top: 12px;
+  font-size: 1.02rem;
+  max-width: 480px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.cta-box__btn {
+  position: relative;
+  margin-top: 22px;
+}
+
+@media (max-width: 640px) {
+  .cta-box {
+    padding: 32px 26px;
+    aspect-ratio: auto;
+  }
+}
+
+.cta-box--primary .eyebrow {
+  color: var(--navy-deep);
+}
+
+.cta-box--primary .eyebrow::before {
+  background: var(--navy-deep);
+}

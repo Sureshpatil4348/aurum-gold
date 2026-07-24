@@ -1,0 +1,582 @@
+/* ==========================================================================
+   AURUM DIAMOND — Design tokens
+   Brand palette (fixed): Navy #1B2360 · Green #19D05F · Aqua/Teal #0CD4A0 · Cyan #07D6C2
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  /* --- Brand colors (do not alter — brand guideline) --- */
+  --navy: #1B2360;
+  --gold: #19D05F;
+  --grey: #eeeff2;
+  --white: #ffffff;
+  --cyan: #07D6C2;
+
+  /* --- Derived tones for depth (built off the brand colors only) --- */
+  --navy-deep: #10163f;
+  --navy-soft: #232c72;
+  --navy-line: rgba(255, 255, 255, 0.1);
+  --gold-soft: #0CD4A0;
+  --gold-dim: rgba(25, 208, 95, 0.14);
+  --grey-line: #dcdee6;
+  --ink-muted: #ffffff; /* Pure white for contrast */
+  --ink-muted-dark: #111827; /* Darker ink for contrast on light BGs */
+
+  /* --- Type --- */
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-mono: 'Poppins', sans-serif;
+
+  /* --- Type scale (fluid) --- */
+  --fs-hero: clamp(2.75rem, 3.2vw + 2rem, 5.25rem);
+  --fs-h2: clamp(2rem, 1.6vw + 1.4rem, 3.25rem);
+  --fs-h3: clamp(1.25rem, 0.6vw + 1.05rem, 1.65rem);
+  --fs-lead: clamp(1.05rem, 0.4vw + 0.95rem, 1.25rem);
+  --fs-body: 16px;
+  --fs-eyebrow: 0.76rem;
+  --fs-stat: clamp(2rem, 1.4vw + 1.5rem, 2.75rem);
+
+  --container: 1180px;
+  --radius: 16px;
+  --radius-sm: 10px;
+
+  /* --- Shadows (premium, layered) --- */
+  --shadow-sm: 0 4px 14px -6px rgba(16, 22, 63, 0.18);
+  --shadow-md: 0 16px 36px -14px rgba(16, 22, 63, 0.28);
+  --shadow-lg: 0 28px 60px -20px rgba(16, 22, 63, 0.38);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
+}
+
+.app-root-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p, span, a, li {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-weight: 700; }
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select, label {
+  font-family: var(--font-body);
+}
+
+button {
+  cursor: pointer;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section {
+  padding: 84px 0;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.section--white,
+.section--grey {
+  border-top: 1px solid rgba(16, 22, 63, 0.08);
+}
+
+.section--tight {
+  padding: 64px 0;
+}
+
+.section--grey {
+  background: var(--grey);
+  color: var(--navy);
+}
+
+.section--grey .eyebrow {
+  color: var(--navy-soft);
+}
+
+.section--grey .eyebrow::before {
+  background: var(--navy-soft);
+}
+
+.section--white {
+  background: var(--white);
+  color: var(--navy);
+}
+
+.section--white .eyebrow {
+  color: var(--navy-soft);
+}
+
+.section--white .eyebrow::before {
+  background: var(--navy-soft);
+}
+
+.section--white .section-head p {
+  color: var(--ink-muted-dark);
+}
+
+/* ==========================================================================
+   Background Variation Engine — Variation 1 (Navy → White → Navy → White → Navy)
+   Applied via JS (useApplySectionBackgrounds) which assigns one of these
+   classes to every top-level .section element, using only the existing
+   brand tokens (navy / white / light grey). `!important` is used only on
+   `background`/`border-top` so the active sequence always wins over any
+   component-specific background (e.g. .cta-block, .pricing).
+   ========================================================================== */
+
+.bgv-navy {
+  background: var(--navy) !important;
+  color: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.bgv-white {
+  background: var(--white) !important;
+  color: var(--navy);
+  border-top: 1px solid rgba(16, 22, 63, 0.08) !important;
+}
+
+.bgv-grey {
+  background: var(--grey) !important;
+  color: var(--navy);
+  border-top: 1px solid rgba(16, 22, 63, 0.08) !important;
+}
+
+/* --- When several navy sections run back to back, alternate subtle shades
+   of the existing navy palette so sections stay visually distinct instead
+   of reading as one flat block. This stays within the brand's existing
+   navy tones. */
+.bgv-navy:nth-of-type(even) {
+  background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%) !important;
+}
+
+.bgv-navy + .bgv-navy {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.bgv-white .eyebrow,
+.bgv-grey .eyebrow {
+  color: var(--navy-soft);
+}
+
+.bgv-white .eyebrow::before,
+.bgv-grey .eyebrow::before {
+  background: var(--navy-soft);
+}
+
+.bgv-white .section-head p,
+.bgv-grey .section-head p {
+  color: var(--ink-muted-dark);
+}
+
+.bgv-white .italic,
+.bgv-grey .italic {
+  color: var(--gold);
+}
+
+/* Ensure any plain text sitting directly on a themed section always
+   inherits the correct base color, even when a component sets its own
+   base `color` at the same specificity. This does not affect text inside
+   fixed-background cards, since those set their own explicit `color` on
+   the specific text elements, which is more specific than this rule. */
+.bgv-navy {
+  color: var(--white) !important;
+}
+
+.bgv-white,
+.bgv-grey {
+  color: var(--navy-deep) !important;
+}
+
+/* --- Ghost button: used as a standalone secondary CTA directly on
+   section backgrounds, so it must adapt with the theme --- */
+.bgv-white .btn--ghost,
+.bgv-grey .btn--ghost {
+  border-color: rgba(16, 22, 63, 0.24);
+  color: var(--navy-deep);
+}
+
+.bgv-white .btn--ghost:hover,
+.bgv-grey .btn--ghost:hover {
+  border-color: #0fa84c;
+  color: #0fa84c;
+}
+
+/* ==========================================================================
+   Premium badge (highlight box)
+   ========================================================================== */
+
+.premium-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(25, 208, 95, 0.1), rgba(7, 214, 194, 0.08));
+  border: 1px solid rgba(25, 208, 95, 0.28);
+  box-shadow: var(--shadow-sm);
+}
+
+.premium-badge__icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color: var(--navy-deep);
+  flex: none;
+}
+
+.premium-badge__text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Premium 3-up feature cards
+   ========================================================================== */
+
+.premium-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.premium-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 32px;
+  background: linear-gradient(180deg, var(--white) 0%, #f7f8fa 100%);
+  border: 1px solid var(--grey-line);
+  border-radius: 24px;
+  box-shadow: 0 4px 20px -8px rgba(16, 22, 63, 0.08);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.premium-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at top right, rgba(25, 208, 95, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.premium-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--cyan));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px -12px rgba(16, 22, 63, 0.12);
+  border-color: rgba(25, 208, 95, 0.3);
+}
+
+.premium-card:hover::before {
+  opacity: 1;
+}
+
+.premium-card__bullet {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  flex: none;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.premium-card:hover .premium-card__bullet {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.premium-card__bullet--1 {
+  background: rgba(25, 208, 95, 0.12);
+  color: #0fa84c;
+}
+
+.premium-card__bullet--2 {
+  background: rgba(7, 214, 194, 0.12);
+  color: #049688;
+}
+
+.premium-card__bullet--3 {
+  background: rgba(27, 35, 96, 0.08);
+  color: var(--navy);
+}
+
+.premium-card h3 {
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+
+.premium-card p {
+  font-size: 0.94rem;
+  line-height: 1.68;
+  color: var(--ink-muted-dark);
+}
+
+@media (max-width: 900px) {
+  .premium-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 44px;
+}
+
+.section-head h2 {
+  font-size: var(--fs-h2);
+  margin-top: 14px;
+}
+
+.section-head p {
+  margin-top: 18px;
+  font-size: var(--fs-lead);
+  color: var(--ink-muted);
+}
+
+.section--grey .section-head p {
+  color: var(--ink-muted-dark);
+}
+
+.italic {
+  /* font-style: italic; */
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--gold {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold) 70%);
+  color: var(--navy-deep);
+  box-shadow: 0 12px 30px -10px rgba(25, 208, 95, 0.55);
+}
+
+.btn--gold:hover {
+  box-shadow: 0 16px 36px -8px rgba(25, 208, 95, 0.7);
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--navy-line);
+  color: var(--white);
+}
+
+.btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn--dark {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn--dark:hover {
+  background: var(--navy-soft);
+}
+
+.btn--outline {
+  background: transparent;
+  border-color: rgba(25, 208, 95, 0.5);
+  color: var(--gold);
+}
+
+.btn--outline:hover {
+  background: rgba(25, 208, 95, 0.1);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Scroll-reveal
+   ========================================================================== */
+
+.reveal {
+  /* opacity: 0; */
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Back to top
+   ========================================================================== */
+
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--navy-line);
+  background: rgba(13, 20, 56, 0.86);
+  backdrop-filter: blur(10px);
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  border-color: var(--gold);
+}
+

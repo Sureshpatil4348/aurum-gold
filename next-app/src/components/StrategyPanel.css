@@ -1,0 +1,160 @@
+.strategy-panel {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 36px;
+  border-radius: var(--radius);
+  background: linear-gradient(155deg, var(--navy-soft) 0%, var(--navy-deep) 100%);
+  border: 1px solid var(--navy-line);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  color: var(--white);
+}
+
+/* Layer 1: live scrolling trading graph canvas (same treatment as .hero__canvas) */
+.strategy-panel__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Layer 2: dark navy overlay for text readability over the chart */
+.strategy-panel__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(155deg, rgba(35, 44, 114, 0.52) 0%, rgba(16, 22, 63, 0.68) 55%, rgba(16, 22, 63, 0.8) 100%);
+  pointer-events: none;
+}
+
+.strategy-panel__glow {
+  position: absolute;
+  top: -100px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(25, 208, 95, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+/* Text-shadow safety net so copy stays crisp regardless of what's behind it */
+.strategy-panel__title-line {
+  text-shadow: 0 2px 16px rgba(8, 12, 38, 0.65);
+}
+
+.strategy-panel__intro,
+.strategy-panel__meter-lead,
+.strategy-panel__scenario-then {
+  text-shadow: 0 1px 10px rgba(8, 12, 38, 0.55);
+}
+
+.strategy-panel__scenario {
+  background: rgba(8, 12, 38, 0.4);
+}
+
+.strategy-panel .eyebrow {
+  position: relative;
+  z-index: 1;
+  color: var(--gold);
+}
+
+.strategy-panel .eyebrow::before {
+  background: var(--gold);
+}
+
+.strategy-panel__title {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: clamp(2.2rem, 2.4vw + 1.4rem, 3.1rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.strategy-panel__title-line {
+  color: var(--white);
+}
+
+.strategy-panel__title-line--accent {
+  color: var(--gold);
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-soft) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.strategy-panel__intro {
+  position: relative;
+  z-index: 1;
+  margin-top: 22px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: whitesmoke;
+  max-width: 38ch;
+}
+
+.strategy-panel__meter {
+  position: relative;
+  z-index: 1;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.strategy-panel__meter-lead {
+  margin: 0 0 16px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: white;
+}
+
+.strategy-panel__scenarios {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.strategy-panel__scenario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.strategy-panel__scenario-when {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.strategy-panel__scenario-then {
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 640px) {
+  .strategy-panel {
+    padding: 28px 22px;
+  }
+
+  .strategy-panel__scenarios {
+    grid-template-columns: 1fr;
+  }
+}

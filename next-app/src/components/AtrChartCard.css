@@ -1,0 +1,96 @@
+.atr-visual-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 26px 28px;
+  border-radius: var(--radius);
+  background: linear-gradient(155deg, var(--navy-soft) 0%, var(--navy-deep) 100%);
+  border: 1px solid var(--navy-line);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  height: 100%;
+}
+
+.atr-visual-card__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.atr-visual-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.atr-visual-card__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+}
+
+.atr-visual-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(25, 208, 95, 0.6);
+  animation: atr-visual-dot-pulse 1.8s ease-out infinite;
+}
+
+@keyframes atr-visual-dot-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(25, 208, 95, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(25, 208, 95, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(25, 208, 95, 0); }
+}
+
+.atr-visual-card__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 1;
+  margin-top: 16px;
+  padding: 8px 0;
+  min-height: 280px;
+}
+
+.atr-visual-card__glow {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(25, 208, 95, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.atr-visual-card__img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  filter: drop-shadow(0 16px 32px rgba(8, 12, 38, 0.45));
+}
+
+@media (max-width: 640px) {
+  .atr-visual-card {
+    padding: 20px 18px 24px;
+  }
+
+  .atr-visual-card__stage {
+    min-height: 220px;
+  }
+
+  .atr-visual-card__img {
+    max-width: 280px;
+  }
+}

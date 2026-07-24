@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#232c72"/>
+      <stop offset="100%" stop-color="#10163f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#g2)"/>
+  <rect x="1" y="1" width="598" height="598" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="2" stroke-dasharray="10 8"/>
+  <circle cx="300" cy="230" r="90" fill="none" stroke="#19D05F" stroke-width="3"/>
+  <path d="M270 230 l20 20 40 -46" fill="none" stroke="#19D05F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="300" y="380" text-anchor="middle" font-family="monospace" font-size="22" letter-spacing="2" fill="#19D05F">REPLACE PHOTO</text>
+  <text x="300" y="412" text-anchor="middle" font-family="sans-serif" font-size="15" fill="rgba(255,255,255,0.55)">founder.jpg · Recommended 600x600</text>
+</svg>

@@ -1,0 +1,303 @@
+.ty-page {
+  min-height: 100vh;
+  padding: 80px 0 100px;
+  background: var(--navy, #0a1628);
+}
+
+.ty-page__container {
+  max-width: 800px;
+}
+
+.ty-loading {
+  text-align: center;
+  color: var(--ink-muted);
+  padding: 60px 0;
+}
+
+/* =====================
+   SUCCESS BANNER
+===================== */
+.ty-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(200, 169, 81, 0.06) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 40px;
+}
+
+.ty-banner__icon {
+  flex-shrink: 0;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ty-banner__text h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.ty-banner__text p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* =====================
+   FORM INTRO
+===================== */
+.ty-form-intro {
+  margin-bottom: 40px;
+}
+
+.ty-form-intro__lead {
+  font-size: 1.05rem;
+  color: var(--white);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.ty-form-intro__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(200, 169, 81, 0.06);
+  border: 1px solid rgba(200, 169, 81, 0.18);
+  border-radius: 10px;
+  padding: 16px 20px;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.ty-form-intro__note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--gold);
+}
+
+/* =====================
+   FORM
+===================== */
+.ty-form {
+  background: var(--navy-light, #111d34);
+  border: 1px solid var(--navy-line, rgba(255,255,255,0.1));
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ty-form__section {
+  padding: 32px;
+  border-bottom: 1px solid var(--navy-line, rgba(255,255,255,0.08));
+}
+
+.ty-form__section:last-of-type {
+  border-bottom: none;
+}
+
+.ty-form__section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 24px;
+}
+
+.ty-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.ty-form__row--2col {
+  flex-direction: row;
+  gap: 20px;
+}
+
+.ty-form__row--2col > label {
+  flex: 1;
+}
+
+.ty-form__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+}
+
+.ty-form__required {
+  color: var(--gold);
+}
+
+.ty-form__input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--navy-line, rgba(255,255,255,0.12));
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  padding: 11px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ty-form__input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200, 169, 81, 0.12);
+}
+
+.ty-form__input::placeholder {
+  color: rgba(255,255,255,0.28);
+}
+
+.ty-form__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.ty-form__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c8a951' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+}
+
+.ty-form__select option {
+  background: #0f1a2e;
+  color: var(--white);
+}
+
+.ty-form__ref-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+}
+
+.ty-form__ref-note code {
+  font-family: monospace;
+  color: var(--gold);
+  font-size: 0.78rem;
+}
+
+.ty-form__error {
+  margin: 0 32px 16px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  color: #fca5a5;
+  font-size: 0.9rem;
+}
+
+.ty-form__submit {
+  display: block;
+  width: calc(100% - 64px);
+  margin: 24px 32px 32px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+
+.ty-form__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =====================
+   SUBMITTED STATE
+===================== */
+.ty-submitted {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.ty-submitted__icon {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+
+.ty-submitted h2 {
+  font-size: 2rem;
+  color: var(--white);
+  margin: 0 0 16px;
+}
+
+.ty-submitted p {
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 12px;
+}
+
+.ty-submitted__cta {
+  display: inline-block;
+  margin-top: 28px;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 640px) {
+  .ty-banner {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .ty-banner__text h1 {
+    font-size: 1.3rem;
+  }
+
+  .ty-form__row--2col {
+    flex-direction: column;
+  }
+
+  .ty-form__section {
+    padding: 24px 20px;
+  }
+
+  .ty-form__submit {
+    width: calc(100% - 40px);
+    margin: 20px 20px 24px;
+  }
+
+  .ty-form__error {
+    margin: 0 20px 16px;
+  }
+}

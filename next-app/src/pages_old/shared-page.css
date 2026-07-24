@@ -1,0 +1,33 @@
+.cta-block {
+  background: radial-gradient(120% 140% at 50% 0%, var(--navy-soft) 0%, var(--navy-deep) 70%);
+}
+
+.cta-block__inner {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.cta-block__inner h2 {
+  font-size: var(--fs-h2);
+  margin-top: 12px;
+}
+
+.cta-block__inner p {
+  margin-top: 16px;
+  color: var(--ink-muted);
+  font-size: var(--fs-lead);
+}
+
+.bgv-white .cta-block__inner p,
+.bgv-grey .cta-block__inner p {
+  color: var(--ink-muted-dark);
+}
+
+.cta-block__actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

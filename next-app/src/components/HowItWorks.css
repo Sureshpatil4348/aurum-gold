@@ -1,0 +1,330 @@
+.how {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  padding-bottom: 56px;
+}
+
+.how__layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.how__head {
+  position: sticky;
+  top: 100px;
+  max-width: 420px;
+}
+
+.how__head .eyebrow {
+  color: var(--navy-soft);
+}
+
+.how__head .eyebrow::before {
+  background: var(--navy-soft);
+}
+
+.how__head h2 {
+  margin-top: 14px;
+  font-size: clamp(1.9rem, 2vw + 1.2rem, 2.6rem);
+  color: var(--navy-deep);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.bgv-navy .how__head h2 {
+  color: var(--white);
+}
+
+.how__intro {
+  margin: 16px 0 0;
+  font-size: var(--fs-lead);
+  line-height: 1.65;
+  color: var(--ink-muted-dark);
+  opacity: 0.72;
+}
+
+.bgv-navy .how__intro {
+  color: rgba(255, 255, 255, 0.72);
+  opacity: 1;
+}
+
+.how__lights {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.how__light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(27, 35, 96, 0.12);
+  border: 1px solid rgba(27, 35, 96, 0.16);
+  transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+
+.bgv-navy .how__light {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.how__light.is-on {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(25, 208, 95, 0.16);
+}
+
+.how__light.is-current {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px rgba(25, 208, 95, 0.22);
+  animation: how-light-pulse 1.6s ease-out infinite;
+}
+
+@keyframes how-light-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(25, 208, 95, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(25, 208, 95, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(25, 208, 95, 0); }
+}
+
+.how__cta {
+  margin-top: 28px;
+}
+
+.how-path {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-path__step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.how-path__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.how-path__num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+  background: rgba(27, 35, 96, 0.08);
+  color: rgba(27, 35, 96, 0.35);
+  border: 1px solid rgba(27, 35, 96, 0.12);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.bgv-navy .how-path__num {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.how-path__step.is-lit .how-path__num {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 6px rgba(25, 208, 95, 0.14);
+}
+
+.how-path__step.is-current .how-path__num {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 8px rgba(25, 208, 95, 0.2);
+}
+
+.how-path__line {
+  position: relative;
+  flex: 1;
+  width: 2px;
+  min-height: 28px;
+  margin: 8px 0;
+  background: rgba(27, 35, 96, 0.1);
+  overflow: hidden;
+}
+
+.bgv-navy .how-path__line {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.how-path__line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.45s ease;
+}
+
+.how-path__line.is-lit::after {
+  transform: scaleY(1);
+}
+
+.how-path__content {
+  padding: 4px 0 36px;
+  opacity: 0.42;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.how-path__step.is-lit .how-path__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.how-path__step:last-child .how-path__content {
+  padding-bottom: 0;
+}
+
+.how-path__content h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--navy-deep);
+  line-height: 1.3;
+}
+
+.bgv-navy .how-path__content h3 {
+  color: var(--white);
+}
+
+.how-path__content p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #4b5568;
+  max-width: 46ch;
+}
+
+.bgv-navy .how-path__content p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.how__email {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 28px 32px;
+  border-radius: var(--radius);
+  border: 1px solid var(--navy-line);
+  background: linear-gradient(155deg, var(--navy-soft), var(--navy-deep));
+}
+
+.how__email-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 380px;
+}
+
+.how__email-copy strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.how__email-copy span {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.how__email-field {
+  display: flex;
+  gap: 10px;
+  flex: none;
+}
+
+.how__email-field input {
+  width: 220px;
+  padding: 13px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--navy-line);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-size: 0.87rem;
+  font-family: var(--font-body);
+}
+
+.how__email-field input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.how__email-field input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.how__email-field .btn {
+  padding: 13px 22px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .how__layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .how__head {
+    position: static;
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .how__email {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 24px 20px;
+  }
+
+  .how__email-copy {
+    max-width: 100%;
+  }
+
+  .how__email-field {
+    flex-direction: column;
+  }
+
+  .how__email-field input {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .how__light,
+  .how-path__num,
+  .how-path__line::after,
+  .how-path__content {
+    transition: none;
+  }
+
+  .how__light.is-current {
+    animation: none;
+  }
+}
