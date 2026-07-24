@@ -1,81 +1,144 @@
-# AURUM Gold — Website
+# AURUM Gold — Next.js Website
 
-A refreshed, brand-aligned rebuild of the AURUM Gold landing page, built with **React (Vite)** on the frontend and **Node.js/Express** on the backend.
+A fully modernized, production-ready reconstruction of the AURUM landing page, built as a unified web application using **Next.js (App Router)**, **React 19**, **Nodemailer** for automated transaction/support emails, **Stripe Checkout** with **Automatic Tax** calculation, and **Zoho Books** for automated client invoicing.
 
-## Page structure (follows the approved wireframe)
+## Page Structure
 
-The homepage was rebuilt section-by-section to match the `Aurum_Homepage_Final` wireframe:
+The application is structured into the following pages:
 
-1. **Header** — logo, nav links, CTA (`Navbar.jsx`)
-2. **Hero** — 6-word headline + 3–4 line copy + CTA + "Strategy of AURUM" button, with a live-animated MyFXBook-style verified report carousel on the right (`Hero.jsx`, `FxbookCarousel.jsx`)
-3. **Feature marquee** — dashed-line scrolling strip of AURUM highlights (`Ticker.jsx`)
-4. **Stats bar** — profit counter (auto-increments every 30s), traders count, years in business, MyFXBook verified badge/link (`StatsBar.jsx`)
-5. **"How AURUM makes you profitable"** — pointer list + tutorial video placeholder, plus a "Get in touch" / "Get Profitable" CTA pair (`ProfitableExplainer.jsx`)
-6. **Testimonials carousel** — horizontally scrollable reviews with rating, profit, join date (`Testimonials.jsx`)
-7. **Strategy vs. Automation** — two-column panel: verified strategy tabs + equity chart + stat cards on the left, "why automation is mandatory" reasons on the right (`StrategyVsAutomation.jsx`, `StrategyPanel.jsx`, `AutomationPanel.jsx`)
-8. **Founder of AURUM** — profile, stats-in-numbers, certifications, "built by a team of experts" (`FounderSection.jsx`)
-9. **Steps to get profitable in 5 minutes** — 4-step onboarding with an email-capture CTA ("we'll set it up for you") (`HowItWorks.jsx`)
-10. **Pricing** — 3 tiers (`Pricing.jsx`)
-11. **FAQ** — accordion (`FAQ.jsx`)
-12. **Final CTA duo** — "Get Profitable Now" + "Still confused? Let's connect" (`CTA.jsx`)
-13. **Footer** — newsletter, brand/social, link columns, trust badges, risk disclosure (`Footer.jsx`)
+1. **Home (`/`)** — Main landing page featuring:
+   - Header Navigation (`Navbar.jsx`)
+   - Hero: 6-word headline, canvas candlestick loop animation, MyFXBook carousel (`Hero.jsx`)
+   - Stats Bar: Live counter, traders count, verified badge (`StatsBar.jsx`)
+   - Profit Explainer (`ProfitableExplainer.jsx`)
+   - Testimonials: Live scrolling user reviews (`Testimonials.jsx`)
+   - Strategy vs. Automation panel (`StrategyVsAutomation.jsx`)
+   - Founder Section (`FounderSection.jsx`)
+   - Steps to Get Started (`HowItWorks.jsx`)
+   - Pricing: 3 plans with side-by-side Choose CTA and smooth expandable details (`Pricing.jsx`)
+   - FAQ Accordion (`FAQ.jsx`)
+   - Footer with trust links & risk disclosure (`Footer.jsx`)
+2. **About (`/about`)** — Full brand info, company profile, and core philosophy.
+3. **Contact (`/contact`)** — Live contact form connected to SMTP support email endpoint.
+4. **FAQ (`/faq`)** — Full standalone accordion-based FAQ.
+5. **Pricing (`/pricing`)** — Standalone pricing page.
+6. **Results (`/results`)** — Detailed trading performance grids, containing the custom `#1B2360` Navy Blue CTA card ("Buy now start trading") redirecting to plans.
+7. **Setup Guide (`/setup-guide`)** — Onboarding and installation instructions.
+8. **Thank You / Requirements (`/thank-you`)** — Post-payment secure onboarding form (protected via validation tokens) to collect MT5 details.
 
-A note on the hero background: I don't have access to license stock video footage in this environment, so instead of an embedded video file the hero uses a full `<canvas>` animation (scrolling gold candlesticks, glowing trend line, drifting particles) that behaves like a premium looping video but stays lightweight and needs no asset hosting. Swap in a real `<video>` tag in `Hero.jsx`/`HeroCanvas.jsx` if you'd rather use footage you own the rights to.
+---
 
-The MyFXBook carousel, testimonials, founder bio, and profit/traders numbers are all placeholder content styled to match a verified-performance product — replace the arrays in `client/src/data/content.js` with your real figures before launch.
+## Technical Features
 
-## Brand palette (as supplied)
+### 1. Stripe Automatic Tax Payment Flow
+- Uses dynamic Stripe Checkout sessions.
+- **No manual country dropdown needed**: Stripe dynamically detects the customer's location at checkout using their billing address.
+- Computes correct local tax/VAT automatically based on address info (e.g. 5% VAT for UAE customers).
+- Backend session uses `tax_behavior: "exclusive"` and `tax_code: "txcd_10000000"` (SaaS/Electronic Services).
 
-| Token | Hex | Usage |
-|---|---|---|
-| Blue (Navy) | `#16225b` | Primary background / headings on light sections |
-| Gold | `#19D05F` | Accent, CTAs, highlights, active states |
-| Grey | `#eeeff2` | Light section backgrounds |
-| White | `#ffffff` | Text on dark backgrounds, card backgrounds |
+### 2. Zoho Books Invoicing Integration
+- Success webhook matches payment data with customer email.
+- Automatically searches for or registers the customer in Zoho Books.
+- Creates an official Zoho invoice containing base price, tax rate, and records the Stripe transaction.
 
-All tokens live in `client/src/index.css` under `:root` — change them there to re-theme the whole site.
+### 3. Automated Transactional Emails
+- Powered by **Nodemailer** via Gmail SMTP.
+- Sends instant transactional summaries to customers upon payment.
+- Delivers a secure login/submission token link to access the Requirements form.
+- Sends instant alert notifications to the Admin team (`EMAIL_TO`) whenever a new payment is made or client onboarding details are submitted.
 
-## Project structure
+---
+
+## Project Structure
 
 ```
-aurum-diamond/
-├─ client/            # React + Vite frontend
-│  └─ src/
-│     ├─ components/  # Navbar, Hero, Ticker, HowItWorks, LiveData, TrustStats, Pricing, FAQ, CTA, Footer
-│     └─ data/         content.js — all copy/content in one place
-└─ server/            # Express API + static file server for production
-   └─ index.js
+aurum-diamond-website-updated/
+└─ next-app/
+   ├─ src/
+   │  ├─ app/                 # App Router (pages & API endpoints)
+   │  │  ├─ api/               # Serverless API routes (contact, Stripe webhook, etc.)
+   │  │  ├─ page.js            # Home Page
+   │  │  └─ ...
+   │  ├─ components/          # Reusable React UI components (Hero, Navbar, Pricing)
+   │  ├─ data/                # Static copy & content (content.js)
+   │  └─ lib/                 # Core server libraries (email, pricing, zoho)
+   ├─ public/                 # Static assets (images, logos)
+   ├─ netlify.toml            # Netlify deployment configuration
+   ├─ next.config.mjs         # Next.js configurations
+   └─ package.json
 ```
 
-## Running locally
+---
 
-**1. Backend**
+## Running Locally
+
+### 1. Configuration
+Create a `.env.local` file inside the `next-app` folder with your credentials:
+
+```env
+# Stripe Keys
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+
+# Zoho Books Keys
+ZOHO_CLIENT_ID=your_client_id
+ZOHO_CLIENT_SECRET=your_client_secret
+ZOHO_REFRESH_TOKEN=your_refresh_token
+ZOHO_ORGANIZATION_ID=your_org_id
+
+# App URL
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# SMTP Configuration (e.g., Gmail)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_email@gmail.com
+SMTP_PASSWORD=your_app_password
+EMAIL_FROM="AURUM EA <your_email@gmail.com>"
+EMAIL_TO=admin_inbox@yourdomain.com
+```
+
+### 2. Start Dev Server
 ```bash
-cd server
 npm install
-npm run dev        # http://localhost:4000
+npm run dev
+# Opens at http://localhost:3000
 ```
 
-**2. Frontend** (in a second terminal)
+### 3. Webhook Tunneling (Local testing)
+To test payment webhooks locally, forward Stripe events to your localhost server:
 ```bash
-cd client
-npm install
-npm run dev         # http://localhost:5173
+stripe listen --forward-to localhost:3000/api/webhook
 ```
 
-The Vite dev server proxies `/api/*` calls to the Express server automatically (see `client/vite.config.js`).
+---
 
-## Production build
+## Production Build & Netlify Deployment
 
+### Production Build
 ```bash
-cd client && npm install && npm run build
-cd ../server && npm install && npm start
+npm run build
 ```
 
-Express serves the built `client/dist` folder and your API from a single port (`4000` by default).
+### Deploying to Netlify
+The project includes a `netlify.toml` configured to compile API routes as serverless Netlify Functions using `@netlify/plugin-nextjs`.
 
-## Notes
+#### Method A: GitHub Integration (Recommended)
+1. Push `next-app` contents to your GitHub repo.
+2. Link the repository to Netlify.
+3. Configure your Environment Variables in the Netlify UI.
+4. Deploy.
 
-- Reduced-motion is respected (`prefers-reduced-motion`) — the hero animation and transitions turn off automatically for users who request it.
-- The ticker strip pulls from `/api/ticker` shape but currently jitters client-side seed data for a live feel; swap `Ticker.jsx`'s local state for a `fetch("/api/ticker")` poll once you have a real price feed.
-- All trading figures (Sharpe ratio, drawdown, etc.) are placeholders from the original recording — replace with your verified MyFXBook numbers before launch.
+#### Method B: Netlify CLI
+1. Log in and link the project:
+   ```bash
+   npm install -g netlify-cli
+   netlify login
+   netlify link
+   ```
+2. Build and deploy to production:
+   ```bash
+   netlify deploy --build --prod
+   ```
