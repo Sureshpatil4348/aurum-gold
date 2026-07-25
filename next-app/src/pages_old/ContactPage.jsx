@@ -4,6 +4,7 @@ import PageHero from "./PageHero";
 import Link from 'next/link';
 import { socialLinks } from "../data/content";
 import Icon from "../components/Icon";
+import MailLink from "../components/MailLink";
 import "./shared-page.css";
 import "./ContactPage.css";
 
@@ -65,7 +66,7 @@ export default function ContactPage() {
                   <div>
                     <div className="contact-channel__label">{c.label}</div>
                     {c.href ? (
-                      <a href={c.href} className="contact-channel__value">{c.value}</a>
+                      <MailLink className="contact-channel__value">{c.value}</MailLink>
                     ) : (
                       <div className="contact-channel__value">{c.value}</div>
                     )}
@@ -138,7 +139,7 @@ export default function ContactPage() {
           <h2>Let&apos;s connect before you decide.</h2>
           <p>No pressure, no sales script — just an honest conversation about whether AURUM is the right fit for your account.</p>
           <div className="cta-block__actions">
-            <a href="mailto:info@aurum-goldea.com" className="btn btn--gold">Email the Team</a>
+            <MailLink className="btn btn--gold">Email the Team</MailLink>
             <Link href="/pricing" className="btn btn--ghost">View Plans</Link>
           </div>
         </div>

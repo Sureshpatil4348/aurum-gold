@@ -336,26 +336,6 @@ export default function SetupGuidePage() {
 
               <div className="risk-panel__illustration" aria-hidden="true">
                 <svg viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline
-                    points="6,120 40,95 70,110 100,60 130,80 160,35 200,48"
-                    stroke="var(--gold-soft)"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    opacity="0.55"
-                  />
-                  <polyline
-                    points="6,120 40,95 70,110 100,60 130,80 160,35 200,48 200,150 6,150"
-                    fill="url(#riskAreaGradient)"
-                    stroke="none"
-                    opacity="0.35"
-                  />
-                  <defs>
-                    <linearGradient id="riskAreaGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
                   <circle cx="168" cy="52" r="30" fill="rgba(25,208,95,0.12)" />
                   <g transform="translate(150,34)">
                     <path

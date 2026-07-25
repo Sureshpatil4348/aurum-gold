@@ -4,8 +4,6 @@ import { steps, onboardingEmailCta } from "../data/content";
 import "./HowItWorks.css";
 
 export default function HowItWorks() {
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const stepRefs = useRef([]);
 
@@ -37,13 +35,6 @@ export default function HowItWorks() {
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!email) return;
-    setSent(true);
-    setEmail("");
-  }
 
   return (
     <section id="steps" className="section how section--white">
@@ -97,25 +88,17 @@ export default function HowItWorks() {
           </ol>
         </div>
 
-        <form className="how__email reveal" style={{ "--reveal-delay": "280ms" }} onSubmit={handleSubmit}>
+        <div className="how__email reveal" style={{ "--reveal-delay": "280ms" }}>
           <div className="how__email-copy">
             <strong>{onboardingEmailCta.heading}</strong>
             <span>{onboardingEmailCta.body}</span>
           </div>
           <div className="how__email-field">
-            <input
-              type="email"
-              required
-              placeholder="you@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-label="Email address"
-            />
-            <button type="submit" className="btn btn--gold">
-              {sent ? "You're on the list" : "Start Automating →"}
-            </button>
+            <a href="/pricing" className="btn btn--gold">
+              Start Automating →
+            </a>
           </div>
-        </form>
+        </div>
       </div>
     </section>
   );

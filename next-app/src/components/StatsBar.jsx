@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { statsBar } from "../data/content";
+import { statsBar, MYFXBOOK_REPORT_URL } from "../data/content";
 import Icon from "./Icon";
 import CountUp from "./CountUp";
 import "./StatsBar.css";
@@ -76,7 +76,7 @@ export default function StatsBar() {
                     <Icon name={s.icon} size={20} strokeWidth={1.8} />
                   </span>
                   <span className="stats-bar__label">{s.label}</span>
-                  <a href="https://www.myfxbook.com" target="_blank" rel="noreferrer" className="stats-bar__link">
+                  <a href={MYFXBOOK_REPORT_URL} target="_blank" rel="noreferrer" className="stats-bar__link">
                     {s.cta}
                     <Icon name="trend" size={13} strokeWidth={2.2} />
                   </a>

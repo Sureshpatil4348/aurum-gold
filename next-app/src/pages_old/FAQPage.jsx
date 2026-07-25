@@ -97,7 +97,7 @@ export default function FAQPage() {
             out of their own way. You can too.
           </p>
           <div className="cta-block__actions">
-            <Link href="/pricing" className="btn btn--gold">Get AURUM Now</Link>
+            <Link href="/pricing#pricing" className="btn btn--gold">Get AURUM Now</Link>
             <Link href="/setup-guide" className="btn btn--ghost">See How It's Installed</Link>
           </div>
         </div>

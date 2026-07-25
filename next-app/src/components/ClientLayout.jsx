@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -16,6 +16,17 @@ export default function ClientLayout({ children }) {
   const path = usePathname();
   useRevealAll(rootRef, [path]);
   useApplySectionBackgrounds(rootRef, BG_SEQUENCE, [path]);
+
+  useEffect(() => {
+    const hash = window.location.hash?.slice(1);
+    if (!hash) return;
+    const scrollToHash = () => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    const timer = window.setTimeout(scrollToHash, 0);
+    return () => window.clearTimeout(timer);
+  }, [path]);
 
   return (
     <div ref={rootRef} key={path} className="app-root-wrapper" style={{ overflowX: "hidden", maxWidth: "100%", width: "100%" }}>

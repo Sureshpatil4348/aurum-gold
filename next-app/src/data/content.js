@@ -3,33 +3,42 @@ export const navLinks = [
   { label: "About", href: "/about", icon: "shield" },
   { label: "Pricing", href: "/pricing", icon: "tag" },
   { label: "Result", href: "/results", icon: "chart" },
-  { label: "FAQ", href: "/faq", icon: "help" },
   { label: "Setup Guide", href: "/setup-guide", icon: "clock" },
+  { label: "Contact Us", href: "/contact", icon: "link" },
 ];
 
 // Hero carousel — image-based slides. Swap the `image` path for real assets
 // (drop files into client/public/images/ and update the path below).
+export const MYFXBOOK_REPORT_URL =
+  "https://www.myfxbook.com/members/MONEYTIZE/aurum-gold-ea-tradewize/12125057";
+
 export const heroCarouselSlides = [
   {
-    image: "/images/hero-slide-1.svg",
+    image: "/images/myfxbook-stats-profit-overview.png",
     title: "Verified on MyFXBook",
-    alt: "AURUM EA live MyFXBook verified performance XAUUSD",
+    thumbLabel: "Overview",
+    alt: "MyFXBook verified AURUM Gold EA Tradewize stats showing +107.67% gain and $530,678 profit on a live account",
+    titleAttr: "AURUM EA MyFXBook verified performance — gain, profit, and equity overview",
     description: "Every trade AURUM places is logged and independently verified — no cherry-picked screenshots, just the real track record.",
     cta: { label: "View Verified Report", href: "/results" }
   },
   {
-    image: "/images/hero-slide-2.svg",
-    title: "Built for Gold & Forex",
-    alt: "AURUM EA Gold trading verified results MT5",
-    description: "An ATR-based grid strategy tuned for XAUUSD and major FX pairs, trading around the clock while you're away from the charts.",
-    cta: { label: "See the Strategy", href: "/#performance" }
+    image: "/images/myfxbook-growth-chart.png",
+    title: "100%+ Live Growth",
+    thumbLabel: "Growth",
+    alt: "MyFXBook growth chart for AURUM Gold EA showing over 100% equity growth from May 2025 to June 2026",
+    titleAttr: "AURUM EA MyFXBook growth and equity curve",
+    description: "Closed-trade growth climbing past 100% over 13+ months of live tracking — equity stays close to the curve.",
+    cta: { label: "See Full Results", href: "/results" }
   },
   {
-    image: "/images/hero-slide-3.svg",
-    title: "Live in Under 15 Minutes",
-    alt: "AURUM EA Gold trading verified results MT5",
-    description: "No coding, no complex configuration. Install AURUM on MT5 and let it start managing risk on your very next trade.",
-    cta: { label: "Setup Guide", href: "/setup-guide" }
+    image: "/images/myfxbook-profit-chart.png",
+    title: "$530k+ Verified Profit",
+    thumbLabel: "Profit",
+    alt: "MyFXBook profit chart for AURUM Gold EA showing cumulative profit rising to over $530,000",
+    titleAttr: "AURUM EA MyFXBook cumulative profit chart",
+    description: "Live account profit tracked from a $500,000 deposit — broker-synced on MyFXBook, not a backtest curve.",
+    cta: { label: "Open Live Report", href: "/results" }
   }
 ];
 
@@ -374,7 +383,7 @@ export const footerColumns = [
     links: [
       { label: "How It Works", href: "/#how-it-works" },
       { label: "Results", href: "/results" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Pricing", href: "/pricing#pricing" },
       { label: "Setup Guide", href: "/setup-guide" }
     ]
   },
@@ -384,16 +393,15 @@ export const footerColumns = [
       { label: "About AURUM", href: "/about" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact Us", href: "/contact" },
-      { label: "Get AURUM", href: "/pricing" }
+      { label: "Get AURUM", href: "/pricing#pricing" }
     ]
   },
   {
-    heading: "Support",
+    heading: "Legal",
     links: [
-      { label: "Setup Guide", href: "/setup-guide" },
-      { label: "VPS Configuration", href: "/setup-guide#vps" },
-      { label: "Risk Settings", href: "/setup-guide#risk" },
-      { label: "Contact Support", href: "/contact" }
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms and Conditions", href: "/terms" },
+      { label: "Refund Policy", href: "/refund" }
     ]
   }
 ];
@@ -415,11 +423,26 @@ export const tickerSeed = [
   { pair: "USDJPY", change: 0.29 }
 ];
 
-export const fxbookSlides = [
-  { month: "June 2026", growth: "+18.4%",profit: "$4,120", drawdown: "5.1%", trades: 38 },
-  { month: "May 2026", growth: "+14.9%", profit: "$3,340", drawdown: "6.0%", trades: 44 },
-  { month: "April 2026", growth: "+21.2%", profit: "$4,980", drawdown: "4.6%", trades: 41 },
-  { month: "March 2026", growth: "+11.7%", profit: "$2,690", drawdown: "6.2%", trades: 36 }
+export const fxbookSummary = [
+  { value: "+107.67%", label: "Verified gain", positive: true },
+  { value: "5.48%", label: "Average monthly return", positive: true },
+  { value: "16.95%", label: "Max drawdown" },
+  { value: "$530k+", label: "Verified profit" }
+];
+
+export const fxbookMonthlyImages = [
+  {
+    image: "/images/myfxbook-monthly-gain-2025.png",
+    alt: "MyFXBook monthly gain chart for AURUM Gold EA in 2025 showing consistent returns from May to December",
+    title: "2025 monthly gains",
+    caption: "May–Dec 2025 monthly gain (change)"
+  },
+  {
+    image: "/images/myfxbook-monthly-gain-2026.png",
+    alt: "MyFXBook monthly gain chart for AURUM Gold EA in 2026 showing 3.75% to 5.91% monthly returns",
+    title: "2026 monthly gains",
+    caption: "Jan–Jun 2026 monthly gain (change)"
+  }
 ];
 
 export const featureChips = [
@@ -545,7 +568,7 @@ export const testimonials = [
     isCta: true,
     title: "Buy now start trading",
     buttonText: "Get Started",
-    buttonLink: "/pricing"
+    buttonLink: "/pricing#pricing"
   }
 ];
 
@@ -596,5 +619,5 @@ export const certifications = ["MyFXBook Verified", "MT5 Certified Vendor", "FX 
 
 export const onboardingEmailCta = {
   heading: "We'll set it up for you",
-  body: "Share your email and our team will walk you through account setup — no experience required."
+  body: "Our team will walk you through account setup — no experience required."
 };

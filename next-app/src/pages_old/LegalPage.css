@@ -1,0 +1,30 @@
+.legal-page__inner {
+  max-width: 720px;
+}
+
+.legal-page__block {
+  margin-bottom: 28px;
+}
+
+.legal-page__block h2 {
+  font-size: 1.2rem;
+  margin: 0 0 10px;
+  color: inherit;
+}
+
+.legal-page__block p {
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.legal-page__cta {
+  margin-top: 36px;
+  font-weight: 600;
+}
+
+.legal-page__cta a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

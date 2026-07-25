@@ -68,10 +68,15 @@ export default function PricingPage() {
 
       <section className="section section--tight">
         <div className="container">
-          <p className="pricing-note" style={{ textAlign: 'center' }}>
-            All plans are lifetime licences — no subscriptions, ever.{" "}
-            <Link href="/contact" style={{ color: 'var(--gold)' }}>Questions before buying? Talk to us first.</Link>
-          </p>
+          <div className="pricing-assurance reveal">
+            <div className="pricing-assurance__copy">
+              <strong>Pay once. Own it forever.</strong>
+              <span>All plans are lifetime licences — no subscriptions, ever.</span>
+            </div>
+            <Link href="/contact" className="btn btn--gold">
+              Talk to us first
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -159,7 +164,7 @@ export default function PricingPage() {
           </div>
         </div>
         <div className="faq-view-all">
-            <Link href="/faq#payment" className="btn btn--ghost">View All FAQs</Link>
+            <Link href="/faq" className="btn btn--ghost">View All FAQs</Link>
         </div>
         
       </section>
@@ -173,8 +178,7 @@ export default function PricingPage() {
             fee either. One payment. Lifetime access.
           </p>
           <div className="cta-block__actions">
-            <Link href="/contact" className="btn btn--gold">Get AURUM Now</Link>
-            <Link href="/contact" className="btn btn--ghost">Talk to the Team First</Link>
+            <Link href="/pricing#pricing" className="btn btn--gold">Get AURUM Now</Link>
           </div>
         </div>
       </section>

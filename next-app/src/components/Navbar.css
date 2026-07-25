@@ -18,18 +18,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 8px 28px;
+  gap: 12px;
+  padding: 8px 20px;
   transition: padding 0.3s ease;
 }
 
 .nav--scrolled .nav__row {
-  padding: 6px 28px;
+  padding: 6px 20px;
 }
 
 .nav__logo {
   display: inline-flex;
   align-items: center;
+  flex: none;
   gap: 1px;
 }
 
@@ -92,21 +93,25 @@
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 6px;
+  flex-wrap: nowrap;
+  gap: 2px;
   margin: 0 auto;
+  min-width: 0;
 }
 
 .nav__link {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-size: 0.8rem;
+  flex: none;
+  gap: 5px;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--ink-muted);
-  padding: 8px 14px;
+  padding: 8px 10px;
   border-radius: 999px;
   transition: color 0.25s ease, background 0.25s ease;
 }
@@ -140,7 +145,8 @@
 .nav__actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  flex: none;
+  gap: 14px;
   margin-left: auto;
 }
 
@@ -193,7 +199,7 @@ header.nav{
   transition: max-height 0.35s ease;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1180px) {
   .nav__logo-tagline {
     display: none;
   }
@@ -213,13 +219,18 @@ header.nav{
     display: none;
   }
   .nav__cta {
-    display: none;
+    display: none !important;
   }
   .nav__burger {
     display: flex;
+    margin-left: auto;
+    z-index: 1000;
   }
   .nav__divider {
     display: none;
+  }
+  .nav__actions {
+    margin-left: auto;
   }
   .nav__mobile {
     display: flex;
@@ -228,6 +239,7 @@ header.nav{
   .nav__mobile.is-open {
     max-height: 600px;
     padding: 18px 28px 24px;
+    background-color: #1B2360;
   }
   .nav__mobile-link {
     display: flex;
@@ -238,6 +250,7 @@ header.nav{
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    white-space: nowrap;
     color: var(--ink-muted);
     border-bottom: 1px solid var(--navy-line);
   }
@@ -245,22 +258,6 @@ header.nav{
     margin-top: 16px;
     width: 100%;
   }
-   .nav__actions {
-    margin-left: auto;
-  }
-
-  .nav__burger {
-    display: flex;
-    margin-left: auto;
-    z-index: 1000;
-  }
-
-  .nav__cta {
-    display: none !important;
-  }
-  .nav__mobile.is-open {
-        background-color: #1B2360;
-    }
 }
 
 @media (max-width: 420px) {

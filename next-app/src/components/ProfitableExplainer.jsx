@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { profitablePoints, tutorialVideo, profitableClosing } from "../data/content";
 import Icon from "./Icon";
+import MailLink from "./MailLink";
 import "./ProfitableExplainer.css";
 
 export default function ProfitableExplainer() {
@@ -66,10 +67,10 @@ export default function ProfitableExplainer() {
           <p className="profitable__close-body">{profitableClosing.body}</p>
           <p className="profitable__close-cta">{profitableClosing.cta}</p>
           <div className="profitable__ctas">
-            <a href="mailto:info@aurum-goldea.com" className="btn btn--ghost profitable__cta">
+            <MailLink className="btn btn--ghost profitable__cta">
               <Icon name="help" size={16} strokeWidth={2} />
               Get in touch with us
-            </a>
+            </MailLink>
             <a href="#pricing" className="btn btn--gold profitable__cta">
               Start Automating
               <Icon name="trend" size={16} strokeWidth={2.2} />

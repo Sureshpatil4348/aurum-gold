@@ -96,6 +96,50 @@
   line-height: 1.4;
 }
 
+.fxbook-monthly {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.fxbook-monthly__item {
+  margin: 0;
+  background: var(--navy-deep);
+  border: 1px solid var(--navy-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  padding: 12px 12px 14px;
+}
+
+.bgv-white .fxbook-monthly__item,
+.bgv-grey .fxbook-monthly__item {
+  background: #fff;
+  border-color: rgba(16, 22, 63, 0.12);
+}
+
+.fxbook-monthly__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: #f7f8fc;
+  object-fit: contain;
+}
+
+.fxbook-monthly__caption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+
+.bgv-white .fxbook-monthly__caption,
+.bgv-grey .fxbook-monthly__caption {
+  color: var(--ink-muted-dark);
+}
+
 .fxbook-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -496,7 +540,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #0c1338;
   opacity: 0;
   transform: scale(1.04);
   transition: opacity 0.7s ease, transform 0.7s ease;
@@ -663,6 +708,9 @@
   .stats-row {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+  }
+  .fxbook-monthly {
+    grid-template-columns: 1fr;
   }
   .fxbook-grid {
     grid-template-columns: repeat(2, 1fr);
